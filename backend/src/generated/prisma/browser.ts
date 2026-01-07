@@ -22,3 +22,8 @@ export * from './enums.js';
  * 
  */
 export type StatusTicket = Prisma.StatusTicketModel
+/**
+ * Model PrioridadeTicket
+ * 
+ */
+export type PrioridadeTicket = Prisma.PrioridadeTicketModel

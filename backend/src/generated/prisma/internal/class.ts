@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel StatusTicket {\n  id        Int     @id @default(autoincrement())\n  nome      String  @unique\n  categoria String\n  ativo     Boolean @default(true)\n\n  criadoEm    DateTime  @default(now())\n  criadoPor   Int       @default(1)\n  alteradoEm  DateTime  @updatedAt\n  alteradoPor Int       @default(1)\n  deletadoEm  DateTime?\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel StatusTicket {\n  id        Int     @id @default(autoincrement())\n  nome      String  @unique\n  categoria String\n  ativo     Boolean @default(true)\n\n  criadoEm    DateTime  @default(now())\n  criadoPor   Int       @default(1)\n  alteradoEm  DateTime  @updatedAt\n  alteradoPor Int       @default(1)\n  deletadoEm  DateTime?\n}\n\nmodel PrioridadeTicket {\n  id        Int     @id @default(autoincrement())\n  nome      String  @unique\n  descricao String?\n  nivel     Int?\n\n  ativo       Boolean   @default(true)\n  deletadoEm  DateTime?\n  criadoPor   Int       @default(1)\n  criadoEm    DateTime  @default(now())\n  alteradoPor Int       @default(1)\n  alteradoEm  DateTime  @updatedAt\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"StatusTicket\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoria\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ativo\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"criadoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"criadoPor\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"alteradoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"alteradoPor\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"deletadoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"StatusTicket\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoria\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ativo\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"criadoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"criadoPor\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"alteradoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"alteradoPor\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"deletadoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"PrioridadeTicket\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nivel\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ativo\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"deletadoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"criadoPor\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"criadoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"alteradoPor\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"alteradoEm\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -183,6 +183,16 @@ export interface PrismaClient<
     * ```
     */
   get statusTicket(): Prisma.StatusTicketDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.prioridadeTicket`: Exposes CRUD operations for the **PrioridadeTicket** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PrioridadeTickets
+    * const prioridadeTickets = await prisma.prioridadeTicket.findMany()
+    * ```
+    */
+  get prioridadeTicket(): Prisma.PrioridadeTicketDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

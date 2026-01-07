@@ -9,4 +9,5 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/StatusTicket.js'
+export type * from './models/PrioridadeTicket.js'
 export type * from './commonInputTypes.js'

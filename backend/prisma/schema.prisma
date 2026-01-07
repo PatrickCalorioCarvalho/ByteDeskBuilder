@@ -27,3 +27,16 @@ model StatusTicket {
   alteradoPor Int     @default(1)
   deletadoEm DateTime?
 }
+model PrioridadeTicket {
+  id          Int      @id @default(autoincrement())
+  nome        String   @unique
+  descricao   String?
+  nivel       Int?
+
+  ativo       Boolean  @default(true)
+  deletadoEm DateTime?
+  criadoPor  Int      @default(1)
+  criadoEm   DateTime @default(now())
+  alteradoPor Int     @default(1)
+  alteradoEm DateTime @updatedAt
+}

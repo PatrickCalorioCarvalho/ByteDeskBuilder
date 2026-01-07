@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  StatusTicket: 'StatusTicket'
+  StatusTicket: 'StatusTicket',
+  PrioridadeTicket: 'PrioridadeTicket'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "statusTicket"
+    modelProps: "statusTicket" | "prioridadeTicket"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PrioridadeTicket: {
+      payload: Prisma.$PrioridadeTicketPayload<ExtArgs>
+      fields: Prisma.PrioridadeTicketFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PrioridadeTicketFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PrioridadeTicketFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>
+        }
+        findFirst: {
+          args: Prisma.PrioridadeTicketFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PrioridadeTicketFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>
+        }
+        findMany: {
+          args: Prisma.PrioridadeTicketFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>[]
+        }
+        create: {
+          args: Prisma.PrioridadeTicketCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>
+        }
+        createMany: {
+          args: Prisma.PrioridadeTicketCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PrioridadeTicketCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>[]
+        }
+        delete: {
+          args: Prisma.PrioridadeTicketDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>
+        }
+        update: {
+          args: Prisma.PrioridadeTicketUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>
+        }
+        deleteMany: {
+          args: Prisma.PrioridadeTicketDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PrioridadeTicketUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PrioridadeTicketUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>[]
+        }
+        upsert: {
+          args: Prisma.PrioridadeTicketUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrioridadeTicketPayload>
+        }
+        aggregate: {
+          args: Prisma.PrioridadeTicketAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePrioridadeTicket>
+        }
+        groupBy: {
+          args: Prisma.PrioridadeTicketGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrioridadeTicketGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PrioridadeTicketCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrioridadeTicketCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -530,6 +605,22 @@ export const StatusTicketScalarFieldEnum = {
 } as const
 
 export type StatusTicketScalarFieldEnum = (typeof StatusTicketScalarFieldEnum)[keyof typeof StatusTicketScalarFieldEnum]
+
+
+export const PrioridadeTicketScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  descricao: 'descricao',
+  nivel: 'nivel',
+  ativo: 'ativo',
+  deletadoEm: 'deletadoEm',
+  criadoPor: 'criadoPor',
+  criadoEm: 'criadoEm',
+  alteradoPor: 'alteradoPor',
+  alteradoEm: 'alteradoEm'
+} as const
+
+export type PrioridadeTicketScalarFieldEnum = (typeof PrioridadeTicketScalarFieldEnum)[keyof typeof PrioridadeTicketScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -720,6 +811,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   statusTicket?: Prisma.StatusTicketOmit
+  prioridadeTicket?: Prisma.PrioridadeTicketOmit
 }
 
 /* Types for Logging */

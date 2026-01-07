@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  StatusTicket: 'StatusTicket'
+  StatusTicket: 'StatusTicket',
+  PrioridadeTicket: 'PrioridadeTicket'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -83,6 +84,22 @@ export const StatusTicketScalarFieldEnum = {
 } as const
 
 export type StatusTicketScalarFieldEnum = (typeof StatusTicketScalarFieldEnum)[keyof typeof StatusTicketScalarFieldEnum]
+
+
+export const PrioridadeTicketScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  descricao: 'descricao',
+  nivel: 'nivel',
+  ativo: 'ativo',
+  deletadoEm: 'deletadoEm',
+  criadoPor: 'criadoPor',
+  criadoEm: 'criadoEm',
+  alteradoPor: 'alteradoPor',
+  alteradoEm: 'alteradoEm'
+} as const
+
+export type PrioridadeTicketScalarFieldEnum = (typeof PrioridadeTicketScalarFieldEnum)[keyof typeof PrioridadeTicketScalarFieldEnum]
 
 
 export const SortOrder = {
